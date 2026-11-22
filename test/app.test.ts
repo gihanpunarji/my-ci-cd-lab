@@ -38,4 +38,13 @@ test('GET /api/health returns a healthy response', async () => {
   assert.deepEqual(await response.json(), {
     status: 'ok',
   });
+
+  test('GET /api/version returns a version response', async () => {
+    const response = await fetch(`${baseUrl}/api/version`);
+
+    assert.equal(response.status, 200);
+    assert.deepEqual(await response.json(), {
+      version: '1.0.0',
+    });
+  });
 });
